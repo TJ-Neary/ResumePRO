@@ -83,7 +83,8 @@ C4Container
 | **LLM Strategy** | Cloud API with offline fallback | Quality-critical content needs API-grade models; offline mode enables use without API keys | Local models only (insufficient quality for metric preservation), API only (no offline capability) |
 | **Experience Format** | STAR with evidence linking | Structured format enables systematic matching; evidence links ensure truthfulness | Free-form narratives (hard to match), keyword lists (lose context) |
 | **Job Analysis** | Three-framework approach | MoSCoW captures priority, Iceberg captures hidden needs, clustering groups themes | Single-framework (misses nuance), keyword-only (too shallow) |
-| **Matching Algorithm** | Multi-dimensional semantic scoring | Captures relevance across skills, competencies, recency, and measurable impact | Keyword matching (misses semantic similarity), LLM-only ranking (expensive, non-deterministic) |
+| **Matching Algorithm** | Six-dimensional semantic scoring | Captures relevance across keyword match, competency alignment, recency, metric strength, semantic similarity, and personalized assessment signals | Keyword matching (misses semantic similarity), LLM-only ranking (expensive, non-deterministic) |
+| **Data Standardization** | Automatic schema normalization | Canonical format enforcement across all experience entries regardless of input source; eliminates schema drift | Manual enforcement (error-prone), multiple accepted formats (fragile downstream) |
 | **Storage** | SQLite with abstract base class | Zero-config, portable, sufficient for single-user; ABC enables future backend swaps | PostgreSQL (overkill), JSON files (no query capability), cloud DB (breaks local-first) |
 | **Multi-Provider LLM** | Anthropic primary, Gemini fallback | Provider diversity prevents vendor lock-in; circuit breaker handles outages | Single provider (fragile), local models (quality gap) |
 | **PII Protection** | Three-layer pipeline | Logging filter, LLM call redaction, and privacy CLI commands cover different attack surfaces | Single-layer (gaps in coverage), external service (breaks local-first) |
@@ -184,7 +185,7 @@ stateDiagram-v2
 | **Storage** | SQLite | Structured data persistence (9 storage classes) |
 | **Document Export** | python-docx | ATS-optimized DOCX generation |
 | **NLP** | spaCy, NLTK | Text processing, entity extraction |
-| **Testing** | pytest (2,534 tests) | Unit, integration, and regression coverage |
+| **Testing** | pytest (2,572 tests) | Unit, integration, and regression coverage |
 | **Prompt Management** | YAML templates with caching | Structured prompt loading and versioning |
 
 ---
@@ -192,16 +193,17 @@ stateDiagram-v2
 ## 8. Module Architecture
 
 ```
-ResumePRO (25+ packages, 138 source files)
+ResumePRO (25+ packages, 139 source files)
 ├── analyzers/          Job posting analysis (MoSCoW, Iceberg, Clustering)
 ├── cli/                29 CLI commands (Typer-based)
 ├── generation/         Resume, cover letter, summary, federal resume
-├── ingestion/          Military records parsing, experience normalization
+├── ingestion/          Military records parsing, experience normalization, data standardization
 ├── interview/          STAR interview orchestrator, session management
 ├── llm/                Multi-provider LLM client (Anthropic + Gemini)
 ├── matching/           Experience scoring, semantic similarity
-├── research/           Company profiling, salary analysis
-├── roles/              Role family management (14 families)
+├── research/           Company profiling, salary analysis, market intelligence
+├── services/           Role loading, category mapping, assessment integration
+├── roles/              Role family management (16 families)
 ├── schemas/            Pydantic data contracts (v1)
 ├── selection/          Bullet selection and optimization
 ├── semantic/           Embedding service, vector store, grounding

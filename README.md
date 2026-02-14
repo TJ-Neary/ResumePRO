@@ -3,14 +3,14 @@
 ![Showcase](https://img.shields.io/badge/type-showcase-purple?style=flat-square)
 ![Python](https://img.shields.io/badge/python-3.12+-blue?style=flat-square)
 ![Anthropic](https://img.shields.io/badge/LLM-Claude-orange?style=flat-square)
-![Tests](https://img.shields.io/badge/tests-2%2C534%20passing-brightgreen?style=flat-square)
+![Tests](https://img.shields.io/badge/tests-2%2C572%20passing-brightgreen?style=flat-square)
 ![License](https://img.shields.io/badge/license-All%20Rights%20Reserved-red?style=flat-square)
 
 # ResumePRO
 
 **A comprehensive, AI-empowered career search ecosystem that builds genuine contextual understanding of a user's professional experience through conversational AI interviews, then produces precisely targeted, ATS-optimized resumes matched to specific job postings.**
 
-This is not keyword insertion. ResumePRO conducts extensive AI-led interview sessions to construct a semantic model of a user's career history, then applies multi-framework job analysis and evidence-verified experience matching to generate resumes that authentically represent qualifications aligned with each role's requirements. Built for career transitions, including military-to-civilian, across 14 professional role families.
+This is not keyword insertion. ResumePRO conducts extensive AI-led interview sessions to construct a semantic model of a user's career history, then applies multi-framework job analysis and evidence-verified experience matching to generate resumes that authentically represent qualifications aligned with each role's requirements. Built for career transitions, including military-to-civilian, across 16 professional role families.
 
 > **This is a showcase repository.** It demonstrates the system architecture, design decisions, and capabilities of a private project. Source code is not included. For technical inquiries, open an [issue](../../issues/new?template=inquiry.yml).
 
@@ -20,7 +20,7 @@ This is not keyword insertion. ResumePRO conducts extensive AI-led interview ses
 
 ### 1. Semantic Experience Understanding
 
-The system goes beyond keyword matching by constructing a rich semantic representation of each experience. Embedding-based similarity scoring compares job requirements against verified professional experiences across multiple dimensions, while a grounding verification layer ensures every claim traces to documented evidence with explicit confidence levels (Verified, Calculated, Estimated).
+The system goes beyond keyword matching by constructing a rich semantic representation of each experience. Embedding-based similarity scoring compares job requirements against verified professional experiences across six dimensions (keyword match, competency alignment, recency, metric strength, semantic similarity, and personalized assessment signals), while a grounding verification layer ensures every claim traces to documented evidence with explicit confidence levels (Verified, Calculated, Estimated).
 
 ### 2. Conversational STAR Interview Engine
 
@@ -45,7 +45,10 @@ Job postings are analyzed through three complementary frameworks simultaneously:
 | **Cover Letter Generation** | LLM-powered with job-specific customization | Aligned messaging across resume and cover letter |
 | **Interview Preparation** | STAR story selection matched to likely interview questions | Consistent narrative from resume through interview |
 | **Company Research** | Automated company profiling with culture and values analysis | Informed positioning for each application |
-| **14 Role Families** | Configurable role profiles with family-specific bullet libraries | Covers HR, PM, OD, L&D, Change Management, and more |
+| **General Resume Mode** | Non-targeted resume generation from full experience library | Ready-to-go resumes for networking and career fairs |
+| **Assessment Integration** | Professional assessment data as a personalized scoring signal | Ranks experiences by alignment with individual strengths |
+| **Data Standardization** | Automatic schema normalization across all experience entries | Consistent data quality regardless of input format |
+| **16 Role Families** | Configurable role profiles with family-specific bullet libraries | Covers HR, PM, OD, L&D, Change Management, AI Transformation, and more |
 
 ---
 
@@ -61,14 +64,15 @@ Job postings are analyzed through three complementary frameworks simultaneously:
 
 | Metric | Value |
 |--------|-------|
-| Passing Tests | 2,534 across 88 test files |
-| Source Modules | 138 files across 25+ packages |
+| Passing Tests | 2,572 across 89 test files |
+| Source Modules | 139 files across 25+ packages |
 | CLI Commands | 29 (22 command groups + 7 standalone) |
-| Role Families | 14 configurable career profiles |
-| Experience Library | 31 verified STAR-format entries |
-| Generated Bullets | ~2,264 role-specific resume bullets |
+| Role Families | 16 configurable career profiles |
+| Experience Library | 35 verified STAR-format entries |
+| Bullet Files | 42 role-family bullet libraries |
+| Generated Bullets | ~2,474 role-specific resume bullets |
+| Scoring Dimensions | 6 (keyword, competency, recency, metrics, semantic, assessment) |
 | Resume Generation | Targeted resume in under 60 seconds |
-| Experience Matching | Multi-dimensional scoring with evidence verification |
 
 ---
 
